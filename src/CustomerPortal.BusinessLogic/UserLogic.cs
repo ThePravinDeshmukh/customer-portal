@@ -9,32 +9,21 @@ namespace Albellicart.BusinessLogic
     public class UserLogic : IUserLogic
     {
         private readonly IUserRepository _UserRepository;
-        private readonly IProductRepository _productRepository;
-        public UserLogic(IUserRepository UserRepository, IProductRepository productRepository)
+        public UserLogic(IUserRepository UserRepository)
         {
             _UserRepository = UserRepository;
-            _productRepository = productRepository;
         }
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<User> GetAll()
         {
-            return _UserRepository.GetUsers();
+            return _UserRepository.GetAll();
         }
-        public User GetUser(int id)
+        public User GetById(int id)
         {
-            return _UserRepository.GetUser(id);
+            return _UserRepository.GetById(id);
         }
-        public User AddUser(User User)
+        public User Create(User user, string password)
         {
-            if (User == null 
-                || string.IsNullOrEmpty(User.EmailAddress)
-                || string.IsNullOrEmpty(User.Password)
-                || string.IsNullOrEmpty(User.FirstName)
-                || string.IsNullOrEmpty(User.LastName))
-            {
-                throw new Exception("User cannot be empty. Please Check all fields.");
-            }
-
-            return _UserRepository.AddUser(User);
+            return _UserRepository.Create(user, password);
         }
     }
 }

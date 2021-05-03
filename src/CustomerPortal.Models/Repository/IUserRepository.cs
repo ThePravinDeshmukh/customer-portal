@@ -4,10 +4,12 @@ namespace CustomerPortal.Models.Repository
 {
     public interface IUserRepository
     {
-        IEnumerable<User> GetUsers();
-        User GetUser(int id);
-        User AddUser(User User);
-        bool IsAuthenticated(string emailAddress, string password);
+        User Authenticate(string username, string password);
+        IEnumerable<User> GetAll();
+        User GetById(int id);
+        User Create(User user, string password);
+        void Update(User user, string password = null);
+        void Delete(int id);
 
     }
 }

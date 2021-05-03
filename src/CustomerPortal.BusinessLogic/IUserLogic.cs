@@ -5,8 +5,7 @@ namespace Albellicart.BusinessLogic
 {
     public interface IUserLogic
     {
-        IEnumerable<User> GetUsers();
-        User GetUser(int id);
-        User AddUser(User User);
+        IEnumerable<User> GetAll();
+        User GetById(int id);
     }
 }

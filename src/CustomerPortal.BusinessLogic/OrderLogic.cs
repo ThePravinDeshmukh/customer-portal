@@ -23,7 +23,7 @@ namespace Albellicart.BusinessLogic
         }
         public Order AddOrder(Order order)
         {
-            if (order == null || order.OrderLine == null || !order.OrderLine.Any())
+            if (order == null || order.OrderLines == null || !order.OrderLines.Any())
             {
                 throw new Exception("Order cannot be empty. Please add product and quantity.");
             }
@@ -39,14 +39,14 @@ namespace Albellicart.BusinessLogic
         private static int GetCountAfterRemovingZeroQtyProducts(Order order)
         {
             var orderlines = order
-                .OrderLine
+                .OrderLines
                 .ToList();
 
             orderlines.RemoveAll(x => x.Quantity == 0);
 
-            order.OrderLine = orderlines;
+            order.OrderLines = orderlines;
 
-            return order.OrderLine.Count();
+            return order.OrderLines.Count();
         }
     }
 }

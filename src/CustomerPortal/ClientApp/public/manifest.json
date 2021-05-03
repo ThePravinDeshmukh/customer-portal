@@ -1,6 +1,6 @@
 {
-  "short_name": "customer_portal",
-  "name": "customer_portal",
+  "short_name": "CustomerPortal",
+  "name": "CustomerPortal",
   "icons": [
     {
       "src": "favicon.ico",

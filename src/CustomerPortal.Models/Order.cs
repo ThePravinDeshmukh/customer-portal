@@ -9,7 +9,7 @@ namespace CustomerPortal.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public IEnumerable<OrderLine> OrderLine { get; set; } = new List<OrderLine>();
+        public IEnumerable<OrderLine> OrderLines { get; set; } = new List<OrderLine>();
 
         public User User { get; set; }
     }

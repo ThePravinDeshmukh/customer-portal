@@ -13,7 +13,10 @@ namespace CustomerPortal.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
-        public string Password { get; set; }
-        public IEnumerable<Order> Order { get; set; } = new List<Order>();
+        public IEnumerable<Order> Orders { get; set; } = new List<Order>();
+        [NotMapped]
+        public byte[] PasswordHash { get; set; }
+        [NotMapped]
+        public byte[] PasswordSalt { get; set; }
     }
 }

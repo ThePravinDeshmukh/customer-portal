@@ -17,20 +17,20 @@ namespace CustomerPortal.Models.Repository
         public IEnumerable<Order> GetOrders()
         {
             return context
-                .Order
-                .Include(b => b.OrderLine)
+                .Orders
+                .Include(b => b.OrderLines)
                 .ToList();
         }
         public Order GetOrder(int id)
         {
             return context
-                .Order
-                .Include(b => b.OrderLine)
+                .Orders
+                .Include(b => b.OrderLines)
                 .FirstOrDefault(x => x.Id == id);
         }
         public Order AddOrder(Order order)
         {
-            context.Order.Add(order);
+            context.Orders.Add(order);
             context.SaveChanges();
 
             return order;
