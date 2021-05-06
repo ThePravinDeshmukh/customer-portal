@@ -4,4 +4,5 @@ export interface IUser {
     lastName: string;
     emailAddress: string;
     userType: string;
+    token: string;
 }

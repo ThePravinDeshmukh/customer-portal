@@ -130,7 +130,7 @@ DocProject/Help/Html2
 DocProject/Help/html
 
 # Click-Once directory
-publish/
+# publish/
 
 # Publish Web Output
 *.[Pp]ublish.xml
@@ -230,3 +230,4 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+/publish/win10x64

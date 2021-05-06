@@ -90,7 +90,9 @@ namespace CustomerPortal.Controllers
             }
         }
 
-        [HttpGet]
+
+        [AllowAnonymous]
+        [HttpGet("all")]
         public IActionResult GetAll()
         {
             var users = _userRepository.GetAll();

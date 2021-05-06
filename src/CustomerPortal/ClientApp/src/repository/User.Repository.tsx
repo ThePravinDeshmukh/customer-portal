@@ -1,11 +1,13 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import { IProps } from '../datasources/IProps';
-import { IUser } from '../datasources/IUsers';
+import { IUser } from '../datasources/IUser';
 
 
 interface IUserState {
   users: IUser[]
   loading: boolean;
+  errorMessage: string;
 }
 
 export class FetchUsers extends Component<IProps, IUserState> {
@@ -13,7 +15,7 @@ export class FetchUsers extends Component<IProps, IUserState> {
 
   constructor(props: IProps) {
     super(props);
-    this.state = { users: [], loading: true };
+    this.state = { users: [], loading: true, errorMessage: "" };
   }
 
   componentDidMount() {
@@ -29,16 +31,15 @@ export class FetchUsers extends Component<IProps, IUserState> {
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email Address</th>
-            <th>User Type</th>
           </tr>
         </thead>
         <tbody>
           {users.map(user =>
             <tr key={user.id}>
+              <td>{user.id}</td>
               <td>{user.firstName}</td>
               <td>{user.lastName}</td>
               <td>{user.emailAddress}</td>
-              <td>{user.userType}</td>
             </tr>
           )}
         </tbody>
@@ -60,8 +61,32 @@ export class FetchUsers extends Component<IProps, IUserState> {
   }
 
   async populateUserData() {
-    const response = await fetch('api/user');
-    const data = await response.json();
-    this.setState({ users: data, loading: false });
+    
+    // const response = await fetch('api/user/all');
+    // const data = await response.json();
+    // this.setState({ users: data, loading: false, errorMessage: "" });
+
+    const headers = {
+      'token': getUser().token
+    };
+
+    axios.get('api/user/all', { headers })
+    .then(response => {
+      debugger
+      this.setState({ users: response.data, loading: false });
+    })
+    .catch(error => {
+      debugger
+        this.setState({ errorMessage: error.message });
+        console.error('There was an error!', error);
+    });
+
+
   }
+  
+}
+
+function getUser() {
+  var user: IUser = JSON.parse(localStorage.getItem('user')?? "");
+  return user;
 }

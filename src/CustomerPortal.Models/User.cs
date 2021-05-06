@@ -14,9 +14,7 @@ namespace CustomerPortal.Models
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
         public IEnumerable<Order> Orders { get; set; } = new List<Order>();
-        [NotMapped]
         public byte[] PasswordHash { get; set; }
-        [NotMapped]
         public byte[] PasswordSalt { get; set; }
     }
 }

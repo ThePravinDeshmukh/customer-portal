@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { IProps } from '../datasources/IProps';
 
-interface ICounterState {
+interface IDashboardState {
   currentCount: number;
 }
 
-export class Counter extends Component<IProps, ICounterState> {
-  static displayName = Counter.name;
+export class Dashboard extends Component<IProps, IDashboardState> {
+  static displayName = Dashboard.name;
 
   constructor(props: IProps) {
     super(props);
@@ -23,7 +23,7 @@ export class Counter extends Component<IProps, ICounterState> {
   render() {
     return (
       <div>
-        <h1>Counter</h1>
+        <h1>Dashboard</h1>
 
         <p>This is a simple example of a React component.</p>
 
