@@ -11,7 +11,7 @@ namespace CustomerPortal.Models
         public string LastName { get; set; }
 
         [Required]
-        public string EmailAddress { get; set; }
+        public string Username { get; set; }
 
         [Required]
         public string Password { get; set; }

@@ -1,7 +1,4 @@
-﻿using CustomerPortal.Enums;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CustomerPortal.Models
 {
@@ -12,8 +9,7 @@ namespace CustomerPortal.Models
         public UserType UserType { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string EmailAddress { get; set; }
-        public IEnumerable<Order> Orders { get; set; } = new List<Order>();
+        public string Username { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
     }

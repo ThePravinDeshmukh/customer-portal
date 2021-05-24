@@ -3,3 +3,18 @@
 ################################################################################
 
 /src/CustomerPortal/bin/Debug/net5.0
+/src/CustomerPortal/.vs/customer-portal
+/src/.vs/CustomerPortal
+/src/CustomerPortal/obj
+/src/CustomerPortal.BusinessLogic/bin/Debug/net5.0
+/src/CustomerPortal.BusinessLogic/obj
+/src/CustomerPortal.BusinessLogic.Tests/bin/Debug/net5.0
+/src/CustomerPortal.BusinessLogic.Tests/obj
+/src/CustomerPortal.IntegrationTests/bin/Debug/net5.0
+/src/CustomerPortal.IntegrationTests/obj
+/src/CustomerPortal.Models/bin/Debug/net5.0
+/src/CustomerPortal.Models/obj
+/src/CustomerPortal.Models.Tests/bin/Debug/.netcoreapp,version=v5.0
+/src/CustomerPortal.Models.Tests/obj
+/src/CustomerPortal.UnitTests/bin/Debug/.netcoreapp,version=v5.0
+/src/CustomerPortal.UnitTests/obj

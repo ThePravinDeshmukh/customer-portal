@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import {
   Collapse,
   Navbar,
@@ -11,15 +11,13 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavbarText,
-  Container,
-  Dropdown
-} from 'reactstrap';
+  Container} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
 import { IProps } from '../datasources/IProps';
 import { IUser } from '../datasources/IUser';
 import { LoggerInUser } from './loggedInUser';
+import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 
 interface INavMenuState{
   collapsed: boolean;
@@ -50,40 +48,51 @@ export class NavMenu extends Component<IProps, INavMenuState> {
          <div>
           <Navbar color="light" light expand="md" className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3">
           <Container>
-            <NavbarBrand href="/">Customer Portal</NavbarBrand>
+            <NavbarBrand href="/">CustomerPortal</NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} />
             <Collapse isOpen={!this.state.collapsed} navbar>
+              
               <Nav className="mr-auto" navbar>
-                <NavItem>
-                  <NavLink href="/">Home</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="/dashboard">Dashboard</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="/users">Users</NavLink>
-                </NavItem>
-
+                <ShowProtectedMenus />
               </Nav>
               <ShowLogin />
             </Collapse>
           </Container>
           </Navbar>
         </div>
-
       </header>
     );
   }
 }
 
+function ShowProtectedMenus() {
+  
+  var user = LoggerInUser();
+  if (user.token === undefined) return null;
+
+  return (
+    <ul className="navbar-nav flex-grow">
+      <NavItem>
+        <NavLink href="/">Home</NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink href="/users">Users</NavLink>
+      </NavItem>
+      </ul>
+  );
+}
+
 function ShowLogin() {
-  if (localStorage.length == 0) return (
+  
+  var user = LoggerInUser();
+  if (user.token === undefined) return (
+    
     <ul className="navbar-nav flex-grow">
       <NavItem className="nav-item">
         <NavLink tag={Link} className="nav-link" to="/login">Login</NavLink>
       </NavItem>
       <NavItem className="nav-item">
-        <NavLink tag={Link} className="nav-link" to="/signup">Signup</NavLink>
+        <NavLink tag={Link} className="nav-link" active to="/signup">Signup</NavLink>
       </NavItem>
     </ul>
   );
@@ -93,18 +102,20 @@ function ShowLogin() {
     <Nav className="mr-right" navbar>
     <UncontrolledDropdown nav inNavbar>
     <DropdownToggle nav caret>
-      Signed in as: <a href="#">{ user.lastName }, { user.firstName }</a>
+      Signed in as: { user.lastName }, { user.firstName }
     </DropdownToggle>
     <DropdownMenu right>
-      <DropdownItem>
-        Profile
-      </DropdownItem>
       <DropdownItem divider />
       <DropdownItem>
-        <NavLink tag={Link} className="nav-link" to="/login">Logout</NavLink>
+        <NavLink tag={Link} className="nav-link" to="#" onClick={e=> logout()}>Logout</NavLink>
       </DropdownItem>
     </DropdownMenu>
   </UncontrolledDropdown>
   </Nav>
   );
+}
+
+function  logout() {
+  localStorage.clear();
+  window.location.href = '/login';
 }

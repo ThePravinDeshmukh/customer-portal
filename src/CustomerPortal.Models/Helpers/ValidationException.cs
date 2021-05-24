@@ -1,19 +1,13 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace CustomerPortal.Models
 {
-    // Custom exception class for throwing application specific exceptions (e.g. for validation) 
-    // that can be caught and handled within the application
     public class ValidationException : Exception
     {
-        public ValidationException() : base() {}
+        private const string VALIDATION_FAILED = "VALIDATION_FAILED";
+        public ValidationException(string errorCode, string errorMessage) : base($"{errorCode} {VALIDATION_FAILED}: {errorMessage}") { }
 
-        public ValidationException(string message) : base(message) { }
-
-        public ValidationException(string message, params object[] args) 
-            : base(String.Format(CultureInfo.CurrentCulture, message, args))
-        {
-        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using CustomerPortal.Models;
 using System.Collections.Generic;
 
-namespace Albellicart.BusinessLogic
+namespace CustomerPortal.BusinessLogic
 {
     public interface IUserLogic
     {
