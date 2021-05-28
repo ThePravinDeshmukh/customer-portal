@@ -55,7 +55,6 @@ function Login() {
 
     const useStyles = makeStyles((theme) => ({
         root: {
-          height: '100vh',
         },
         image: {
           backgroundImage: 'url(img/thought-catalog-bj8U389A9N8-unsplash.jpg)',
@@ -66,10 +65,10 @@ function Login() {
           backgroundPosition: 'center',
         },
         paper: {
-          margin: theme.spacing(8, 4),
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
+          marginTop: theme.spacing(8),
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
         },
         avatar: {
           margin: theme.spacing(1),
@@ -88,10 +87,9 @@ function Login() {
     const classes = useStyles();
   
     return (
-      <Grid container component="main" className={classes.root}>
+      <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Grid item xs={false} sm={4} md={7} className={classes.image} />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        {/* <Grid item xs={false} sm={4} md={7} className={classes.image} /> */}
           <div className={classes.paper}>
             <Avatar className={classes.avatar}>
               {/* <LockOutlinedIcon /> */}
@@ -141,8 +139,7 @@ function Login() {
               </Box>
             </form>
           </div>
-        </Grid>
-      </Grid>
+    </Container>
     );
 }
 

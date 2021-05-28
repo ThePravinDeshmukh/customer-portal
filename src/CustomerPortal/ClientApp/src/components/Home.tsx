@@ -59,7 +59,7 @@ export function Home() {
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
-        <Tabs
+      <Tabs
           value={value}
           onChange={handleChange}
           indicatorColor="primary"
@@ -68,7 +68,7 @@ export function Home() {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
+          <Tab label="Customers" {...a11yProps(0)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>

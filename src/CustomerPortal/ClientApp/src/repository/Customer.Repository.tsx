@@ -51,7 +51,6 @@ const initCurrentCustomer: ICustomer = { reference: 0, name: "", phone: 0, id: 0
   // return here
   return (
     <div className="App">
-      <h2>Customers</h2>
       <div className="user-flex-wrapper">
         {editing ? (
           <EditCustomerForm

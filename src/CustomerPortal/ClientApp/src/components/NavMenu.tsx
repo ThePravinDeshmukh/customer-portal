@@ -47,7 +47,7 @@ export class NavMenu extends Component<IProps, INavMenuState> {
       <header>
          <div>
           <Navbar color="light" light expand="md" className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3">
-          <Container>
+
             <NavbarBrand href="/">CustomerPortal</NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} />
             <Collapse isOpen={!this.state.collapsed} navbar>
@@ -57,7 +57,6 @@ export class NavMenu extends Component<IProps, INavMenuState> {
               </Nav>
               <ShowLogin />
             </Collapse>
-          </Container>
           </Navbar>
         </div>
       </header>

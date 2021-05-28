@@ -1,11 +1,33 @@
 import React, { useState } from "react";
 import validator, { noErrors, FormErrors } from "../validator";
 import { ICustomer } from "../datasources/ICustomer";
+import { Avatar, Button, Container, CssBaseline, Grid, makeStyles, TextField, Typography } from "@material-ui/core";
 
 interface IProps {
   onAddCustomer: (customer: ICustomer) => void;
 }
-const initcustomer = {id: 0, name: "", reference: 0, email: "", phone: 0, fax: 0 };
+
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
+const initcustomer = {id: 0, name: "", reference: null, email: "", phone: null, fax: null };
 const AddCustomerForm: React.FunctionComponent<IProps> = props => {
   const [formValue, setFormValue] = useState(initcustomer);
   const [errors, setErrors] = useState<FormErrors>({});
@@ -39,80 +61,118 @@ const AddCustomerForm: React.FunctionComponent<IProps> = props => {
     const { name, value } = e.target;
     setFormValue({ ...formValue, [name]: value });
   };
+
+  const classes = useStyles();
+  
   return (
-    <div className="customer-form">
-      <h3>Add Customers</h3>
-      <form className="form-edit" onSubmit={onFormSubmit}>
-        <div className="form-row">
-          <label>Name</label>
-          <input
-            type="text"
-            placeholder="please input name"
-            name="name"
-            value={formValue.name}
-            onChange={onInputChange}
-          />
-          {errors["name"] && errors["name"].length > 0 && (
-            <div className="form-error">{errors["name"].join(",")}</div>
-          )}
-        </div>
-        <div className="form-row">
-          <label>Reference</label>
-          <input
-            type="number"
-            placeholder="please input reference"
-            name="reference"
-            value={formValue.reference}
-            onChange={onInputChange}
-          />
-          {errors["reference"] && errors["reference"].length > 0 && (
-            <div className="form-error">{errors["reference"].join(",")}</div>
-          )}
-        </div>
-        <div className="form-row">
-          <label>Email</label>
-          <input
-            type="email"
-            placeholder="please input email"
-            name="email"
-            value={formValue.email}
-            onChange={onInputChange}
-          />
-          {errors["email"] && errors["email"].length > 0 && (
-            <div className="form-error">{errors["email"].join(",")}</div>
-          )}
-        </div>
-        <div className="form-row">
-          <label>Phone</label>
-          <input
-            type="number"
-            placeholder="please input phone"
-            name="phone"
-            value={formValue.phone}
-            onChange={onInputChange}
-          />
-          {errors["phone"] && errors["phone"].length > 0 && (
-            <div className="form-error">{errors["phone"].join(",")}</div>
-          )}
-        </div>
-        <div className="form-row">
-          <label>Fax</label>
-          <input
-            type="number"
-            placeholder="please input fax"
-            name="fax"
-            value={formValue.fax}
-            onChange={onInputChange}
-          />
-          {errors["fax"] && errors["fax"].length > 0 && (
-            <div className="form-error">{errors["fax"].join(",")}</div>
-          )}
-        </div>
-        <div className="form-row">
-          <button>Add new customer</button>
-        </div>
-      </form>
-    </div>
+    <div className={classes.paper}>
+    <CssBaseline />
+      <Typography component="h2" variant="h5">
+        Add New Customer
+      </Typography>
+        <form className={classes.form} onSubmit={onFormSubmit}>
+          <Grid container spacing={1}>
+            <Grid item xs={9}>
+              <TextField
+                id="name"
+                label="Customer Name"
+                name="name"
+                variant="outlined"
+                required
+                fullWidth
+                placeholder="please input name"
+                value={formValue.name}
+                onChange={onInputChange}
+                size="small"
+              />
+              {errors["name"] && errors["name"].length > 0 && (
+                <div className="form-error">{errors["name"].join(",")}</div>
+              )}
+            </Grid>
+            <Grid item xs={3}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="reference"
+                label="Reference"
+                type="number"
+                placeholder="please input reference"
+                name="reference"
+                value={formValue.reference}
+                onChange={onInputChange}
+                size="small"
+              />
+              {errors["reference"] && errors["reference"].length > 0 && (
+                <div className="form-error">{errors["reference"].join(",")}</div>
+              )}
+            </Grid>
+            <Grid item xs={4}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                type="email"
+                id="email"
+                label="Email"
+                placeholder="please input email"
+                name="email"
+                value={formValue.email}
+                onChange={onInputChange}
+                size="small"
+              />
+              {errors["email"] && errors["email"].length > 0 && (
+                <div className="form-error">{errors["email"].join(",")}</div>
+              )}
+            </Grid>
+            <Grid item xs={4}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                type="number"
+                name="phone"
+                label="Phone"
+                id="phone"
+                placeholder="please input phone"
+                value={formValue.phone}
+                onChange={onInputChange}
+                size="small"
+              />
+              {errors["phone"] && errors["phone"].length > 0 && (
+                <div className="form-error">{errors["phone"].join(",")}</div>
+              )}
+            </Grid>
+            <Grid item xs={4}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                type="number"
+                name="fax"
+                label="Fax"
+                id="fax"
+                placeholder="please input fax"
+                value={formValue.fax}
+                onChange={onInputChange}
+                size="small"
+              />
+              {errors["fax"] && errors["fax"].length > 0 && (
+                <div className="form-error">{errors["fax"].join(",")}</div>
+              )}
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Add new customer
+          </Button>
+
+        </form>
+      </div>
   );
 };
 export default AddCustomerForm;

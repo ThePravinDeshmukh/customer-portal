@@ -64,8 +64,20 @@ export default class App extends Component<IProps, IAppState> {
       <div >
           <Layout>
             {!this.state.loading && (<Switch>
-              <Route path="/login" component={Login} />
-              <Route path="/signup" component={SignUp} />
+              {/* <Route path="/login" component={Login} />
+              <Route path="/signup" component={SignUp} /> */}
+              <PrivateRoute
+                  path='/login'
+                  redirect={ Login }
+                  component={ Home }
+                  isAuthenticated={isAuth}
+              />
+              <PrivateRoute
+                  path='/signup'
+                  redirect={ SignUp }
+                  component={ Home }
+                  isAuthenticated={isAuth}
+              />
               <PrivateRoute
                   path='/customers'
                   redirect={ Login }
