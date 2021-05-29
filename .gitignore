@@ -18,3 +18,7 @@
 /src/CustomerPortal.Models.Tests/obj
 /src/CustomerPortal.UnitTests/bin/Debug/.netcoreapp,version=v5.0
 /src/CustomerPortal.UnitTests/obj
+/src/CustomerPortal/bin/Release/net5.0
+/publish-and-run/windows
+/src/CustomerPortal.BusinessLogic/bin/Release/net5.0
+/src/CustomerPortal.Models/bin/Release/net5.0

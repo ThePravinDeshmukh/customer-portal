@@ -42,16 +42,15 @@ export class NavMenu extends Component<IProps, INavMenuState> {
   }
 
   render () {
-    
     return (
       <header>
          <div>
           <Navbar color="light" light expand="md" className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3">
-
-            <NavbarBrand href="/">CustomerPortal</NavbarBrand>
+            <NavbarBrand href="/">
+              <img src="img/aerfin.png" height="80" alt="" />
+            </NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} />
             <Collapse isOpen={!this.state.collapsed} navbar>
-              
               <Nav className="mr-auto" navbar>
                 <ShowProtectedMenus />
               </Nav>

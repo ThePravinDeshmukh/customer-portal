@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/lab": "^4.0.0-alpha.58",
+    "@mui-treasury/components": "^1.10.1",
     "@types/node": "^15.0.1",
     "@types/react": "^17.0.4",
     "@types/react-dom": "^17.0.3",
@@ -24,6 +25,7 @@
     "rimraf": "^2.6.2"
   },
   "devDependencies": {
+    "@types/color": "^3.0.1",
     "@types/react-router-dom": "^5.1.7",
     "ajv": "^6.9.1",
     "cross-env": "^5.2.0",

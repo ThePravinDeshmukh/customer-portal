@@ -9,7 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Typography from "@material-ui/core/Typography";
-import { Button, ButtonGroup, TablePagination } from "@material-ui/core";
+import { Button, ButtonGroup, CssBaseline, TablePagination } from "@material-ui/core";
 
 interface IProps {
   customers: Array<ICustomer>;
@@ -19,6 +19,7 @@ interface IProps {
 
 const useStyles = makeStyles({
   root: {
+    marginTop: '15px',
     width: '100%',
   },
   container: {
@@ -44,9 +45,10 @@ const CustomerTable: React.FunctionComponent<IProps> = props => {
   return (
     <div>
       
+    <CssBaseline />
       <Typography component="h2" variant="h5">
-          View Customers
-        </Typography>
+        View Customer
+      </Typography>
 
       <Paper className={classes.root}>
       <TableContainer className={classes.container}>

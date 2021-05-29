@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const initcustomer = {id: 0, name: "", reference: null, email: "", phone: null, fax: null };
+const initcustomer = { id: 0, name: "", reference: undefined, email: undefined, phone: undefined, fax : undefined};
 const AddCustomerForm: React.FunctionComponent<IProps> = props => {
   const [formValue, setFormValue] = useState(initcustomer);
   const [errors, setErrors] = useState<FormErrors>({});
@@ -172,6 +172,9 @@ const AddCustomerForm: React.FunctionComponent<IProps> = props => {
           </Button>
 
         </form>
+
+        <hr/>
+
       </div>
   );
 };

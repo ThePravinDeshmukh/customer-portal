@@ -26,7 +26,7 @@ export interface FormValue {
     return Object.values(value).length === 0;
   };
   const validator = (
-    formValue: FormValue,
+    formValue: any,
     rules: rules,
     callback: (errors: any) => void
   ) => {
